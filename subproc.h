@@ -12,25 +12,25 @@
 #define E_WRITEPIPE 32
 
 class Subprocess : public Listener {
-	private:
-		pid_t pid;
-		ReaderPipe *rd;
-		WriterPipe *wr;
-		time_t lastResponse;
+    private:
+        pid_t pid;
+        ReaderPipe *rd;
+        WriterPipe *wr;
+        time_t lastResponse;
 
-		Listener *listener;
-	public:
-		void action(Listener*, int);
-		void poke();
-		bool responsed();
+        Listener *listener;
+    public:
+        void action(Listener*, int);
+        void poke();
+        bool responsed();
 
-		Subprocess(const char*);
-		~Subprocess();
-		void setListener(Listener*);
-		size_t readFrom(size_t, void*);
-		size_t writeTo(size_t, void*);
+        Subprocess(const char*);
+        ~Subprocess();
+        void setListener(Listener*);
+        size_t readFrom(size_t, void*);
+        size_t writeTo(size_t, void*);
 
-		Subprocess(const Subprocess&);
+        Subprocess(const Subprocess&);
 };
 
 #endif

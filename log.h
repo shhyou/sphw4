@@ -24,10 +24,10 @@ std::vector<std::string> callstk;
 #define __logc log_t logger(typeid(*this).name(), __func__)
 
 struct logprint_t {
-	const char *type;
-	FILE * const output;
-	logprint_t(const char *_type, FILE *_output);
-	void operator()(const char *fmt, ...) const;
+    const char *type;
+    FILE * const output;
+    logprint_t(const char *_type, FILE *_output);
+    void operator()(const char *fmt, ...) const;
 };
 
 /*************************************************************************
@@ -42,15 +42,15 @@ struct logprint_t {
  ************************************************************************/
 
 struct log_t {
-	log_t(const char* function);
-	log_t(const char* type, const char* function);
-	~log_t();
-	logprint_t print;
-	logprint_t eprint;
-	std::string trace() const;
-	std::string raise(const char* fmt, ...) const;
-	std::string errmsg(const char* fmt, ...) const;
-	std::string herrmsg(const char* fmt, ...) const;
+    log_t(const char* function);
+    log_t(const char* type, const char* function);
+    ~log_t();
+    logprint_t print;
+    logprint_t eprint;
+    std::string trace() const;
+    std::string raise(const char* fmt, ...) const;
+    std::string errmsg(const char* fmt, ...) const;
+    std::string herrmsg(const char* fmt, ...) const;
 };
 
 #endif

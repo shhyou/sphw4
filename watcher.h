@@ -15,20 +15,20 @@ class Listener {
 };
 
 class Watcher {
-	private:
-		int epollfd;
+    private:
+        int epollfd;
         std::unordered_map<int, Listener*> watching;
-	public:
-		static Watcher& getInstance();
+    public:
+        static Watcher& getInstance();
 
         void watch(int, Listener*);
         void unwatch(int);
         void wait();
-		Watcher();
-		~Watcher();
+        Watcher();
+        ~Watcher();
 
-		Watcher(const Watcher&);
-		const Watcher& operator=(const Watcher&);
+        Watcher(const Watcher&);
+        const Watcher& operator=(const Watcher&);
 };
 
 #endif

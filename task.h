@@ -9,29 +9,29 @@
 #define E_FINISHED 64
 
 class Task : public Listener {
-	private:
-		int begin, end; // index
-		FILE *ftmp;
-		Subprocess *proc;
+    private:
+        int begin, end; // index
+        FILE *ftmp;
+        Subprocess *proc;
         Listener *listener;
 
-		int bytesRead, bytesWritten;
-		char buffer[65536];
-	public:
-		void action(Listener*, int);
+        int bytesRead, bytesWritten;
+        char buffer[65536];
+    public:
+        void action(Listener*, int);
 
-		Task(int, int);
-		~Task();
-		void attach(Subprocess*);
-		void detach();
+        Task(int, int);
+        ~Task();
+        void attach(Subprocess*);
+        void detach();
         bool finished();
         void setListener(Listener*);
         void reset();
         int32_t getInteger();
         bool eof();
 
-		Task(const Task&);
-		const Task& operator=(const Task&);
+        Task(const Task&);
+        const Task& operator=(const Task&);
 };
 
 #endif

@@ -19,12 +19,12 @@ class Pipe {
 class PipeEnd : public Listener {
     protected:
         int pipefd;
-		Listener *listener;
+        Listener *listener;
     public:
-		void action(Listener*, int);
+        void action(Listener*, int);
 
         void dupTo(int);
-		void setListener(Listener*);
+        void setListener(Listener*);
         PipeEnd();
         ~PipeEnd();
 
@@ -35,7 +35,7 @@ class PipeEnd : public Listener {
 class WriterPipe : public PipeEnd {
     public:
         WriterPipe(Pipe&);
-		ssize_t write(size_t, void*);
+        ssize_t write(size_t, void*);
 
         WriterPipe(const WriterPipe&);
         const WriterPipe& operator=(const WriterPipe&);
@@ -44,7 +44,7 @@ class WriterPipe : public PipeEnd {
 class ReaderPipe : public PipeEnd {
     public:
         ReaderPipe(Pipe&);
-		ssize_t read(size_t, void*);
+        ssize_t read(size_t, void*);
 
         ReaderPipe(const ReaderPipe&);
         const ReaderPipe& operator=(const ReaderPipe&);

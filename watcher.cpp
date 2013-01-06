@@ -23,8 +23,8 @@ Watcher::Watcher() {
 Watcher::~Watcher() {}
 
 Watcher& Watcher::getInstance() {
-	static Watcher inst;
-	return inst;
+    static Watcher inst;
+    return inst;
 }
 
 void Watcher::watch(int fd, Listener *receiver){

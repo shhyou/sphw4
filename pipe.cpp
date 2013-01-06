@@ -42,11 +42,11 @@ int Pipe::useReadEnd() { __logc;
 
 PipeEnd::PipeEnd() { __logc;
     pipefd = -1;
-	listener = NULL;
+    listener = NULL;
 }
 
 PipeEnd::~PipeEnd() { __logc;
-	Watcher::getInstance().unwatch(pipefd);
+    Watcher::getInstance().unwatch(pipefd);
     close(pipefd);
     logger.print("unwatching %d", pipefd);
 }
@@ -60,16 +60,16 @@ void PipeEnd::dupTo(int newfd) { __logc;
 }
 
 void PipeEnd::setListener(Listener* receiver) { __logc;
-	listener = receiver;
-	Watcher::getInstance().watch(pipefd, this);
+    listener = receiver;
+    Watcher::getInstance().watch(pipefd, this);
     logger.print("watching %d", pipefd);
 }
 
 void PipeEnd::action(Listener *obj, int e) { __logc;
-	assert(this == dynamic_cast<PipeEnd*>(obj));
+    assert(this == dynamic_cast<PipeEnd*>(obj));
     logger.print("action, obj = %p, e = %x", obj, e);
-	if (listener)
-		listener->action(this, e);
+    if (listener)
+        listener->action(this, e);
 }
 
 WriterPipe::WriterPipe(Pipe& p) { __logc;
@@ -77,7 +77,7 @@ WriterPipe::WriterPipe(Pipe& p) { __logc;
 }
 
 ssize_t WriterPipe::write(size_t byte, void* buffer) { __logc;
-	return ::write(pipefd, buffer, byte);
+    return ::write(pipefd, buffer, byte);
 }
 
 ReaderPipe::ReaderPipe(Pipe& p) { __logc;
@@ -85,5 +85,5 @@ ReaderPipe::ReaderPipe(Pipe& p) { __logc;
 }
 
 ssize_t ReaderPipe::read(size_t byte, void* buffer) { __logc;
-	return ::read(pipefd, buffer, byte);
+    return ::read(pipefd, buffer, byte);
 }
